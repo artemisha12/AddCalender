@@ -30,8 +30,10 @@ namespace UI_Tier
         private void AddNewForm_Load(object sender, EventArgs e)
         {
             dtStart.Value = selectedDate;
-            
+            dtEnd.Value = selectedDate.AddHours(1);
+
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -182,7 +184,20 @@ namespace UI_Tier
 
         private void dtStart_ValueChanged(object sender, EventArgs e)
         {
-
+            // Nếu thời gian bắt đầu mới lớn hơn thời gian kết thúc → cập nhật lại dtEnd
+            if (dtStart.Value >= dtEnd.Value)
+            {
+                dtEnd.Value = dtStart.Value.AddHours(1); // mặc định gợi ý sau 1 giờ
+            }
         }
+        private void dtEnd_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtEnd.Value <= dtStart.Value)
+            {
+                MessageBox.Show("Thời gian kết thúc phải sau thời gian bắt đầu.");
+                dtEnd.Value = dtStart.Value.AddHours(1);
+            }
+        }
+
     }
 }

@@ -251,6 +251,10 @@
             this.panel1.PerformLayout();
             this.plRemind.ResumeLayout(false);
             this.plRemind.PerformLayout();
+
+            this.Load += new System.EventHandler(this.AddNewForm_Load);
+            this.dtStart.ValueChanged += new System.EventHandler(this.dtStart_ValueChanged);
+            this.dtEnd.ValueChanged += new System.EventHandler(this.dtEnd_ValueChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
