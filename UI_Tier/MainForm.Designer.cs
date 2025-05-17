@@ -263,6 +263,7 @@ namespace UI_Tier
             this.lstEvent.Name = "lstEvent";
             this.lstEvent.Size = new System.Drawing.Size(363, 276);
             this.lstEvent.TabIndex = 1;
+            this.lstEvent.SelectedIndexChanged += new System.EventHandler(this.lstEvent_SelectedIndexChanged);
             // 
             // label8
             // 

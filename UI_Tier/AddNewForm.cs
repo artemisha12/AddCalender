@@ -65,6 +65,19 @@ namespace UI_Tier
             TimeSpan newDuration = end - start;
             using (var db = new CalendarDbContext())
             {
+                if (chkBGroupMeeting.Checked)
+                {
+                    var group = new GroupMeeting
+                    {
+                        Title = title,
+                        Description = "",
+                        Start = start,
+                        End = end,
+                        UserId = currentUser.Id,
+                        Participants = new List<User> { db.Users.Find(currentUser.Id) }
+                    };
+                    db.GroupMeetings.Add(group);
+                }
                 var conflict = bus.GetConflictingPersonalEvent(currentUser.Id, start, end);
                 var newEvent = new PersonalEvent
                 {
@@ -72,8 +85,7 @@ namespace UI_Tier
                     Location = location,
                     Start = start,
                     End = end,
-                    UserId = currentUser.Id,
-                    
+                    UserId = currentUser.Id
                 };
                 if (conflict != null)
                 {
@@ -128,21 +140,21 @@ namespace UI_Tier
 
                 if (chkBoxRemind.Checked)
                 {
-                    
-                    
+
+
                     foreach (var item in chLstRepeatDays.CheckedItems)
                     {
-                        DayOfWeek? day = ConvertToDayOfWeek (item.ToString());
+                        TimeSpan offset = GetOffsetFromString(item.ToString());
                         var reminder = new Reminder
                         {
-                            NotifyAt = dTReapeat.Value,
-                            DayOfWeek = day,
+                            NotifyAt = start.Subtract(offset),
+       
                             PersonalEvent = newEvent
                         };
                         db.Reminders.Add(reminder);
                     }
-                   
-                   
+
+
                 }
                 db.SaveChanges();
                 MessageBox.Show("Đã thêm sự kiện thành công!");
@@ -151,26 +163,21 @@ namespace UI_Tier
             }
         }
 
-        private DayOfWeek? ConvertToDayOfWeek(String item)
+        private TimeSpan GetOffsetFromString(string item)
         {
-            
-
             switch (item.Trim())
             {
-                case "Thứ 2": return DayOfWeek.Monday;
-                case "Thứ 3": return DayOfWeek.Tuesday;
-                case "Thứ 4": return DayOfWeek.Wednesday;
-                case "Thứ 5": return DayOfWeek.Thursday;
-                case "Thứ 6": return DayOfWeek.Friday;
-                case "Thứ 7": return DayOfWeek.Saturday;
-                case "Chủ nhật": return DayOfWeek.Sunday;
-                default: return null;
+                case "10 phút": return TimeSpan.FromMinutes(10);
+                case "30 phút": return TimeSpan.FromMinutes(30);
+                case "1 giờ": return TimeSpan.FromHours(1);
+                case "1 ngày": return TimeSpan.FromDays(1);
+                default: return TimeSpan.FromMinutes(0);
             }
         }
 
-       
 
-        
+
+
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {

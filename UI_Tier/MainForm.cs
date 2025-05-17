@@ -98,7 +98,7 @@ namespace UI_Tier
             lstEvent.Items.Clear();
             foreach (var ev in events)
             {
-                lstEvent.Items.Add($" ({ev.Type}): {ev.Title} {ev.Start:HH:mm} - {ev.End:HH:mm}");
+                lstEvent.Items.Add($" ({ev.Type}): {ev.Title} Ngày {ev.Start:dd/MM} : {ev.Start:HH:mm} - Ngày {ev.End:dd/MM} : {ev.End:HH:mm}");
             }
         }
             
@@ -131,6 +131,11 @@ namespace UI_Tier
             }
             bus.SaveAllChanges();
             this.Close();
+        }
+
+        private void lstEvent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

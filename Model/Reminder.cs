@@ -10,7 +10,6 @@ namespace Model
     {
         public int Id { get; set; }
         public DateTime NotifyAt { get; set; }
-        public DayOfWeek? DayOfWeek { get; set; }
 
         public int PersonalEventId { get; set; }
         public PersonalEvent PersonalEvent { get; set; }

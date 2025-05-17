@@ -36,15 +36,14 @@
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.plRemind = new System.Windows.Forms.Panel();
-            this.dTReapeat = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.chLstRepeatDays = new System.Windows.Forms.CheckedListBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkBGroupMeeting = new System.Windows.Forms.CheckBox();
+            this.chLstRepeatDays = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.plRemind.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +51,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SeaShell;
+            this.panel1.Controls.Add(this.chkBGroupMeeting);
             this.panel1.Controls.Add(this.chkBoxRemind);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.dtEnd);
@@ -65,14 +65,14 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(110, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(587, 460);
+            this.panel1.Size = new System.Drawing.Size(588, 483);
             this.panel1.TabIndex = 0;
             // 
             // chkBoxRemind
             // 
             this.chkBoxRemind.AutoSize = true;
             this.chkBoxRemind.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxRemind.Location = new System.Drawing.Point(17, 231);
+            this.chkBoxRemind.Location = new System.Drawing.Point(21, 277);
             this.chkBoxRemind.Name = "chkBoxRemind";
             this.chkBoxRemind.Size = new System.Drawing.Size(108, 27);
             this.chkBoxRemind.TabIndex = 12;
@@ -84,7 +84,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Pink;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(449, 406);
+            this.btnSave.Location = new System.Drawing.Point(450, 411);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 40);
             this.btnSave.TabIndex = 2;
@@ -101,6 +101,7 @@
             this.dtEnd.ShowUpDown = true;
             this.dtEnd.Size = new System.Drawing.Size(294, 22);
             this.dtEnd.TabIndex = 11;
+            this.dtEnd.ValueChanged += new System.EventHandler(this.dtEnd_ValueChanged);
             // 
             // dtStart
             // 
@@ -130,61 +131,23 @@
             // plRemind
             // 
             this.plRemind.BackColor = System.Drawing.Color.MistyRose;
-            this.plRemind.Controls.Add(this.dTReapeat);
             this.plRemind.Controls.Add(this.label8);
             this.plRemind.Controls.Add(this.chLstRepeatDays);
-            this.plRemind.Controls.Add(this.label7);
-            this.plRemind.Location = new System.Drawing.Point(146, 231);
+            this.plRemind.Location = new System.Drawing.Point(135, 277);
             this.plRemind.Name = "plRemind";
-            this.plRemind.Size = new System.Drawing.Size(344, 169);
+            this.plRemind.Size = new System.Drawing.Size(310, 124);
             this.plRemind.TabIndex = 6;
             this.plRemind.Visible = false;
-            // 
-            // dTReapeat
-            // 
-            this.dTReapeat.CustomFormat = "dd/MM/yyyy  HH:mm";
-            this.dTReapeat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dTReapeat.Location = new System.Drawing.Point(90, 10);
-            this.dTReapeat.Name = "dTReapeat";
-            this.dTReapeat.Size = new System.Drawing.Size(175, 22);
-            this.dTReapeat.TabIndex = 12;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 48);
+            this.label8.Location = new System.Drawing.Point(3, 4);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 23);
+            this.label8.Size = new System.Drawing.Size(53, 23);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Lặp lại";
-            // 
-            // chLstRepeatDays
-            // 
-            this.chLstRepeatDays.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chLstRepeatDays.FormattingEnabled = true;
-            this.chLstRepeatDays.Items.AddRange(new object[] {
-            "Thứ 2",
-            "Thứ 3",
-            "Thứ 4",
-            "Thứ 5",
-            "Thứ 6",
-            "Thứ 7",
-            "Chủ nhật"});
-            this.chLstRepeatDays.Location = new System.Drawing.Point(86, 48);
-            this.chLstRepeatDays.Name = "chLstRepeatDays";
-            this.chLstRepeatDays.Size = new System.Drawing.Size(147, 84);
-            this.chLstRepeatDays.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 23);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Thời gian";
+            this.label8.Text = "Trước";
             // 
             // label5
             // 
@@ -237,24 +200,47 @@
             this.label1.Text = "Sự kiện mới";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // chkBGroupMeeting
+            // 
+            this.chkBGroupMeeting.AutoSize = true;
+            this.chkBGroupMeeting.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBGroupMeeting.Location = new System.Drawing.Point(21, 230);
+            this.chkBGroupMeeting.Name = "chkBGroupMeeting";
+            this.chkBGroupMeeting.Size = new System.Drawing.Size(149, 27);
+            this.chkBGroupMeeting.TabIndex = 13;
+            this.chkBGroupMeeting.Text = "GroupMeeting";
+            this.chkBGroupMeeting.UseVisualStyleBackColor = true;
+            // 
+            // chLstRepeatDays
+            // 
+            this.chLstRepeatDays.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chLstRepeatDays.FormattingEnabled = true;
+            this.chLstRepeatDays.Items.AddRange(new object[] {
+            "10 phút",
+            "30 phút",
+            "1 giờ",
+            "1 ngày ",
+            "1 tuần"});
+            this.chLstRepeatDays.Location = new System.Drawing.Point(82, 4);
+            this.chLstRepeatDays.Name = "chLstRepeatDays";
+            this.chLstRepeatDays.Size = new System.Drawing.Size(147, 84);
+            this.chLstRepeatDays.TabIndex = 12;
+            // 
             // AddNewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
-            this.ClientSize = new System.Drawing.Size(864, 548);
+            this.ClientSize = new System.Drawing.Size(859, 572);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "AddNewForm";
             this.Text = "AddNewForm";
+            this.Load += new System.EventHandler(this.AddNewForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.plRemind.ResumeLayout(false);
             this.plRemind.PerformLayout();
-
-            this.Load += new System.EventHandler(this.AddNewForm_Load);
-            this.dtStart.ValueChanged += new System.EventHandler(this.dtStart_ValueChanged);
-            this.dtEnd.ValueChanged += new System.EventHandler(this.dtEnd_ValueChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,11 +259,10 @@
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Panel plRemind;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckedListBox chLstRepeatDays;
-        private System.Windows.Forms.DateTimePicker dTReapeat;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.CheckBox chkBoxRemind;
+        private System.Windows.Forms.CheckBox chkBGroupMeeting;
+        private System.Windows.Forms.CheckedListBox chLstRepeatDays;
     }
 }
