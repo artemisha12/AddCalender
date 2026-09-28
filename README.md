@@ -11,6 +11,7 @@
 - 🔔 Nhắc lịch trước giờ diễn ra [nếu có]
 - 📆 Xem lịch theo ngày / tuần / tháng [nếu có]
 - 💾 Lưu dữ liệu [cục bộ / trên cloud]
+- 📆 Tổng hợp lịch trình yêu thích
 
 ```bash
 # 1. Clone dự án
